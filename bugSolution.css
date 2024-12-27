@@ -1,0 +1,13 @@
+The solution involves properly escaping special characters within the CSS variable:
+
+```css
+:root {
+  --my-content: "This is some content with a \"quote\" and a backslash \\!";
+}
+
+.my-element::before {
+  content: var(--my-content);
+}
+```
+
+By escaping the quote and backslash characters with backslashes, we ensure that they are correctly interpreted by the CSS parser as literal characters within the string, rather than as syntax elements.  Alternative solutions might include using Javascript to dynamically set the `content` property, if the content is truly dynamic, avoiding issues with escaping entirely.
