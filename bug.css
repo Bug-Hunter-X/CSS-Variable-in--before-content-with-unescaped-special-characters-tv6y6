@@ -1,0 +1,13 @@
+The following CSS code snippet demonstrates an uncommon bug that might occur when using the `:before` pseudo-element with content generated from a variable:
+
+```css
+:root {
+  --my-content: "This is some content";
+}
+
+.my-element::before {
+  content: var(--my-content);
+}
+```
+
+This code seems harmless, but if `--my-content` contains special characters like quotes or backslashes that aren't properly escaped, it may lead to unexpected rendering behaviors or CSS parsing errors.  For example, if `--my-content` contains a single quote, it might prematurely terminate the content string.
